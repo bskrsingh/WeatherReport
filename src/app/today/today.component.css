@@ -45,3 +45,10 @@
     from{margin-left: -55px;}
     to{margin-left: 65px;}
 }
+
+@media only screen and (max-width: 600px) {
+    #divWeatherMain {
+      width:100%;
+      margin:10px auto
+    }
+  }
