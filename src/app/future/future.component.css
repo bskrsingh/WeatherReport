@@ -1,0 +1,14 @@
+.main{display:grid;grid-template-columns: repeat(5,8rem);border-bottom: 1px solid #e3e3e3;padding: 10px; cursor: pointer;}
+li.main:last-child{border:transparent}
+li.main:hover{background:#fff9edd9;}
+.sub{display:flex;justify-content:space-between;list-style:none;padding:0px 15px;}
+.selected{font-weight:bold;}
+h3.dataHead{background:#e3e3e3;color:#000;font-size:12px;text-transform:uppercase;padding:15px}
+.primary,.secondaryDsp{border:1px solid #e3e3e3}
+.p10{padding:15px;background:#fff9edd9;}
+.p10 li{list-style-type:decimal;margin:0 15px;display:inline-grid}
+.p10 li span{font-weight:bold;}
+ul{padding:0  10px;}
+.main li{display:inline-block;list-style:none;}
+.main ul{display:block;}
+.foreCast a{color:#fff;text-decoration:none;}
