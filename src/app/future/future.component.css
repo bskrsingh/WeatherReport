@@ -1,4 +1,4 @@
-.main{display:grid;grid-template-columns: repeat(5,8rem);border-bottom: 1px solid #e3e3e3;padding: 10px; cursor: pointer;}
+.main{border-bottom: 1px solid #e3e3e3;padding: 10px; cursor: pointer;list-style:none;}
 li.main:last-child{border:transparent}
 li.main:hover{background:#fff9edd9;}
 .sub{display:flex;justify-content:space-between;list-style:none;padding:0px 15px;}
@@ -12,3 +12,4 @@ ul{padding:0  10px;}
 .main li{display:inline-block;list-style:none;}
 .main ul{display:block;}
 .foreCast a{color:#fff;text-decoration:none;}
+.paddDiv{padding:10px}
