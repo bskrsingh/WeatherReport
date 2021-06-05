@@ -6,7 +6,7 @@
     </div>
     <div class="container">
         <div class="row">
-    <div class="col-lg-6 col-sm-6 col-xs-12 col-md-6 paddDiv">
+    <div class="col-lg-6 col-sm-12 col-xs-12 col-md-12 paddDiv">
         <h3 class="dataHead">{{dt_text | date: 'EEEE, MMMM d, y'}} Forecast</h3>
         <span>{{city}}</span>
         <div>
@@ -14,27 +14,30 @@
         </div>
         <div><b>SeaLevel </b> {{sealevel}}mm</div>
     </div>
-    <div class="col-lg-6 col-sm-6 col-xs-12 col-md-6 paddDiv">
+    <div class="col-lg-6 col-sm-12 col-xs-12 col-md-12 paddDiv">
         <div class="primary" *ngIf="primaryDisplay">
             <h3 class="dataHead">5 days Forecast</h3>
             <ul>
-                <li class="main" (click)="toggle(weatherData[i], i)" *ngFor="let forecast of weatherData; let i =index">
-                    <div>
+                <li class="main row" (click)="toggle(weatherData[i], i)" *ngFor="let forecast of weatherData; let i =index">
+                    <div class="col-lg-4 col-sm-4 col-xs-4">
                         <span> {{forecast.dt_txt | date: 'EEEE, MMMM d, y'}} </span>
                     </div>
-                    <div>
+                    <div class="col-lg-2 col-sm-3 col-xs-3">
                         <span>
                             {{(forecast.main.temp_min-273.15).toFixed(0)}}°F
                             {{(forecast.main.temp_max-273.15).toFixed(0)}}°F
                         </span>
                     </div>
-                    <div>
+                    <div class="col-lg-2 col-sm-2 col-xs-2">
                         <span>
                             {{forecast.weather[0].main}}
                         </span>
                     </div>
-                    <div> <span>{{forecast.main.sea_level}}mm</span></div>
-                    <span><i class="fa fa-caret-down" area-hidden="true"></i></span>
+                    <div class="col-lg-4 col-sm-4 col-xs-4"> 
+                        <span>{{forecast.main.sea_level}}mm</span> &nbsp;
+                        <span><i class="fa fa-caret-down" area-hidden="true"></i></span>
+                    </div>
+                    
             </li>
             </ul>
         </div>
