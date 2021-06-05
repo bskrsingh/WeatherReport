@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SendMessageService } from '../service/send-message.service';
 import { ActivatedRoute, Router } from '@angular/router'
@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router'
   templateUrl: './today.component.html',
   styleUrls: ['./today.component.css']
 })
-export class TodayComponent implements OnInit {
+export class TodayComponent implements OnInit, OnDestroy {
   showDatas: any = []
   data: any
   WeatherData: any;
@@ -17,6 +17,7 @@ export class TodayComponent implements OnInit {
   param: any;
   username: any = '';
   keys:any=["er"];
+  sub:any;
   ngOnInit(): void {
     //this is using to change the day/moon
     this.WeatherData = {
@@ -33,7 +34,7 @@ export class TodayComponent implements OnInit {
   getWeatherDataCity(param: any, key:any) {
     // calling the API from service
     param.forEach((element: any) => {
-      this.forecast.getWeatherData(element).subscribe(res => {
+     this.sub = this.forecast.getWeatherData(element).subscribe(res => {
         this.showDatas.push(res) // send the data into an array for retrieving the data in DOM
         this.WeatherData = res;
         let sunsetTime = new Date(this.WeatherData.sys.sunset * 1000);
@@ -47,17 +48,15 @@ export class TodayComponent implements OnInit {
     });
   }
 
-  // calling input field for specific indian city
-  // getWeatherCity(key:any) {    
-  //   this.keys.push(key);
-  //   this.param = [];
-  //   this.param.push(this.username)
-  //   this.getWeatherDataCity(this.param,this.keys);
-  // }
-  
   //call when click on any of the city and sending the city name as a parameter
   showReocrds(data: any) {
     this.forecast.getWeather(data);
+  }
+
+  ngOnDestroy():void{
+    if(this.sub){
+      this.sub.unsubscribe();
+    }
   }
 
 
