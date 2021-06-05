@@ -1,11 +1,21 @@
-<div class="foreCast">Forecast Weather Report For 5 European city</div>
+<div class="foreCast row">
+    <span class="col-lg-8 col-sm-12 col-md-12 col-xs-12"> Forecast Weather Report For 5 European city </span>
+    <div class="pull-right cityName col-lg-4 col-sm-12 col-md-12 col-xs-12">
+        Search Specific City of India :
+        <span>IN</span>
+        <input type="text" placeholder="Enter City name" id="username" name="username" [(ngModel)]="username" />
+        <span><i class="fa fa-search" aria-hidden="true" (click)="getWeatherCity('in')"></i></span>
+    </div>
+</div>
 <div class="container">
-    <div id="divWeatherMain" *ngFor="let WeatherData of showDatas" (click)="showReocrds(WeatherData.name)" routerLink="/future/{{WeatherData.name}}">
-        <div *ngIf="isDay" class="weatherWidgetRow">
-            <i class="fa fa-3x fa-sun sun"></i>
+    <div id="divWeatherMain" *ngFor="let WeatherData of showDatas" (click)="showReocrds(WeatherData.name)"
+        routerLink="/future/{{WeatherData.name}}">
+        <div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
+            <i class="fa fa-sun-o fa-3x sun"></i>
         </div>
-        <div *ngIf="!isDay" class="weatherWidgetRow">
-            <i class="fa fa-3x fa-moon moon"></i>
+        <div *ngIf="!WeatherData.isDay" class="weatherWidgetRow">
+            <i class="fa fa-moon-o fa-3x moon"></i>
+
         </div>
         <div class="weatherWidgetRow cloudDiv">
             <i class="fa fa-cloud fa-3x cloud"></i>
@@ -19,8 +29,10 @@
                 {{(WeatherData.main.feels_like-273.15).toFixed(0)}}°</div>
             <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{WeatherData.name}}</div>
             <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{WeatherData.main.humidity}}%</div>
-            <div class="weatherWidgetRow" style="font-size: 12px;">Sunrise Time: {{WeatherData.sys.sunrise | date:'h:mm a z'}}</div>
-            <div class="weatherWidgetRow" style="font-size: 12px;">Sunset Time: {{WeatherData.sys.sunset | date:'h:mm a z'}}</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">Sunrise Time: {{WeatherData.sys.sunrise | date:'h:mm
+                a z'}}</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">Sunset Time: {{WeatherData.sys.sunset | date:'h:mm a
+                z'}}</div>
         </div>
     </div>
 </div>

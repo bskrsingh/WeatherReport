@@ -40,7 +40,22 @@
     animation-timing-function: ease-in-out;
     animation-direction: alternate;
 }
-
+.cityName input[type='text']{
+    border: 1px solid #e3e3e3;
+    box-shadow: none;
+    font-size: 12px;
+    padding: 5.5px;
+}
+.cityName input[type='text']:focus{box-shadow:none;}
+.cityName span{border: 1px solid #e3e3e3;
+    padding: 0px 3px 0px;
+    background-color: #de8d39;
+    line-height: 28px;
+    margin: 0 0;
+    display: inline-block;
+    font-size: 13px;
+}
+.cityName span:last-child{background:#fff;color:#000;cursor: pointer;}
 @keyframes cloudMovement{
     from{margin-left: -55px;}
     to{margin-left: 65px;}
@@ -51,4 +66,8 @@
       width:100%;
       margin:10px auto
     }
+    .foreCast{
+        text-align:center;
+    }
+    .foreCast span{margin:10px 0}
   }
