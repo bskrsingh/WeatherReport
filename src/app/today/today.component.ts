@@ -48,12 +48,12 @@ export class TodayComponent implements OnInit {
   }
 
   // calling input field for specific indian city
-  getWeatherCity(key:any) {    
-    this.keys.push(key);
-    this.param = [];
-    this.param.push(this.username)
-    this.getWeatherDataCity(this.param,this.keys);
-  }
+  // getWeatherCity(key:any) {    
+  //   this.keys.push(key);
+  //   this.param = [];
+  //   this.param.push(this.username)
+  //   this.getWeatherDataCity(this.param,this.keys);
+  // }
   
   //call when click on any of the city and sending the city name as a parameter
   showReocrds(data: any) {
