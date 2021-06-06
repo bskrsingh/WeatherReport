@@ -1,11 +1,5 @@
 <div class="foreCast">
     <span> Forecast Weather Report For 5 European city </span>
-    <!-- <div class="pull-right cityName col-lg-4 col-sm-12 col-md-12 col-xs-12">
-        Search Specific City of India :
-        <span>IN</span>
-        <input type="text" placeholder="Enter City name" id="username" name="username" [(ngModel)]="username" />
-        <span><i class="fa fa-search" aria-hidden="true" (click)="getWeatherCity('in')"></i></span>
-    </div> -->
 </div>
 <div class="container">
     <div id="divWeatherMain" *ngFor="let WeatherData of showDatas" (click)="showReocrds(WeatherData.name)"

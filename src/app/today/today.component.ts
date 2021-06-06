@@ -16,8 +16,8 @@ export class TodayComponent implements OnInit, OnDestroy {
   isDay: any = true
   param: any;
   username: any = '';
-  keys:any=["er"];
-  sub:any;
+  keys: any = ["er"];
+  sub: any;
   ngOnInit(): void {
     //this is using to change the day/moon
     this.WeatherData = {
@@ -31,30 +31,35 @@ export class TodayComponent implements OnInit, OnDestroy {
   }
 
   // get the city forecast details from service
-  getWeatherDataCity(param: any, key:any) {
+  getWeatherDataCity(param: any, key: any) {
     // calling the API from service
     param.forEach((element: any) => {
-     this.sub = this.forecast.getWeatherData(element).subscribe(res => {
+      this.sub = this.forecast.getWeatherData(element).subscribe(res => {
         this.showDatas.push(res) // send the data into an array for retrieving the data in DOM
         this.WeatherData = res;
-        let sunsetTime = new Date(this.WeatherData.sys.sunset * 1000);
-        this.WeatherData.sunset_time = sunsetTime.toLocaleTimeString();
-        let currentDate = new Date();
-        if(this.keys[0] == 'er'){ // this will check to giving the europe or india and accordingly change the time
-        currentDate.toLocaleString('en-GB', { timeZone: 'Europe/London' }); // convert the time as per europe
-        }
-        this.WeatherData.isDay = (currentDate.getTime() < sunsetTime.getTime());
+        this.dayNightdsp()// display for day night of the city
       });
     });
   }
+
+  dayNightdsp() {
+    let sunsetTime = new Date(this.WeatherData.sys.sunset * 1000);
+    this.WeatherData.sunset_time = sunsetTime.toLocaleTimeString();
+    let currentDate = new Date();
+    if (this.keys[0] == 'er') { // this will check to giving the europe or india and accordingly change the time
+      currentDate.toLocaleString('en-GB', { timeZone: 'Europe/London' }); // convert the time as per europe
+    }
+    this.WeatherData.isDay = (currentDate.getTime() < sunsetTime.getTime());
+  }
+
 
   //call when click on any of the city and sending the city name as a parameter
   showReocrds(data: any) {
     this.forecast.getWeather(data);
   }
 
-  ngOnDestroy():void{
-    if(this.sub){
+  ngOnDestroy(): void {
+    if (this.sub) {
       this.sub.unsubscribe();
     }
   }
