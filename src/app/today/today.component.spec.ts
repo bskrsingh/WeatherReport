@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, inject } from '@angular/core/testing';
 import { RouterTestingModule } from "@angular/router/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { TodayComponent } from './today.component';
@@ -14,8 +14,10 @@ describe('TodayComponent', () => {
   let fixture: ComponentFixture<TodayComponent>;
   let mockList = mockListProduct
   let testService : SendMessageService
+  let userService;
+  let User:any;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ TodayComponent ],
       imports: [RouterTestingModule, HttpClientTestingModule],
@@ -24,7 +26,7 @@ describe('TodayComponent', () => {
     .compileComponents();
   });
 
-  beforeEach(() => {
+  beforeEach(()  => {
     fixture = TestBed.createComponent(TodayComponent);
     component = fixture.componentInstance;
     testService = TestBed.get(SendMessageService)
@@ -32,13 +34,15 @@ describe('TodayComponent', () => {
   });
 
   it('testing suscribe method is getting called', fakeAsync(() => {
-    let data='London';
-    let productSpy = spyOn(testService, 'getWeather').and.returnValue(of(mockList));
-    let subSpy = spyOn(testService.getWeather(data), 'subscribe');
-    component.ngOnInit();
+    User = [];
+    const response = User;
+    let proSpy = spyOn(testService, 'getWeather').and.returnValue(of(mockList));
+    let subSpy = spyOn(testService.getWeather('london'), 'subscribe').and.callThrough();
+    component.getWeatherDataCity('london',"er");
     tick();
-    expect(productSpy).toHaveBeenCalledBefore(subSpy);
-    expect(subSpy).toHaveBeenCalled();
+    expect(proSpy).toHaveBeenCalled();
+   // expect(proSpy).toEqual(response)
+    expect(subSpy).toHaveBeenCalledTimes(0);
   }));
 
   it('testing execution within subscrbe method', fakeAsync(() => {

@@ -18,8 +18,9 @@ export class TodayComponent implements OnInit, OnDestroy {
   username: any = '';
   keys: any = ["er"];
   sub: any;
-  sunsetTime:any;
-  sunriseTime:any
+  sunsetTime: any;
+  sunriseTime: any;
+  paramRecord:any;
   ngOnInit(): void {
     //this is using to change the day/moon
     this.WeatherData = {
@@ -29,19 +30,21 @@ export class TodayComponent implements OnInit, OnDestroy {
     // 5 diffrent European city
     this.param = ["London", "Moscow", "Berlin", "madrid", "Rome"]
     //by default load the europe city
-    this.getWeatherDataCity(this.param, this.keys);
+    this.param.forEach((paramData: any) => {
+      this.getWeatherDataCity(paramData, this.keys);
+    });
   }
 
   // get the city forecast details from service
   getWeatherDataCity(param: any, key: any) {
     // calling the API from service
-    param.forEach((element: any) => {
-      this.sub = this.forecast.getWeatherData(element).subscribe(res => {
-        this.showDatas.push(res) // send the data into an array for retrieving the data in DOM
-        this.WeatherData = res;
-        this.dayNightdsp()// display for day night of the city
-      });
+    this.sub = this.forecast.getWeatherData(param).subscribe(res => {
+      this.showDatas.push(res) // send the data into an array for retrieving the data in DOM
+     this.paramRecord = res;
+      this.WeatherData = res;
+      this.dayNightdsp()// display for day night of the city
     });
+    console.log("this.showDatas", this.showDatas);
   }
 
   dayNightdsp() {
