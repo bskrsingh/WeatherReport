@@ -46,10 +46,7 @@ export class TodayComponent implements OnInit, OnDestroy {
 
   dayNightdsp() {
     this.sunriseTime = new Date(this.WeatherData.sys.sunrise * 1000).toISOString();
-   // this.sunriseTime.toLocaleString()
     this.sunsetTime = new Date(this.WeatherData.sys.sunset * 1000).toISOString();
-   // this.sunsetTime.toLocaleTimeString();
-   // this.WeatherData.sunset_time = this.sunsetTime.toISOString();
     let currentDate = new Date();
     if (this.keys[0] == 'er') { // this will check to giving the europe or india and accordingly change the time
       currentDate.toLocaleString(); // convert the time as per europe

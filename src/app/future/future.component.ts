@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SendMessageService } from '../service/send-message.service';
 import {ActivatedRoute} from '@angular/router'
+import { getLocaleDateTimeFormat } from '@angular/common';
 
 @Component({
   selector: 'app-future',
@@ -34,16 +35,19 @@ sealevel:any
     this.forecast.getWeather(this.myParam).subscribe(res =>{
       this.data.push(res)
       this.dataset = this.data[0].list;
-      // this is for one way binding in left section of future component
-      this.city = this.data[0].city.name;
-      this.sunset = this.data[0].city.sunset;
-      this.sunrise = this.data[0].city.sunrise;
-      this.dt_text = this.data[0].list[0].dt_txt;
-      this.sealevel = this.data[0].list[0].main.sea_level
-      
+      this.dateTimeBinding()      
       this.futureForecast(this.dataset)
     })
    // this.forecast.setWeatherDatas(this.data)
+  }
+
+  dateTimeBinding(){
+     // this is for one way binding in left section of future component
+     this.city = this.data[0].city.name;
+     this.sunset =  new Date(this.data[0].city.sunset * 1000).toUTCString();
+     this.sunrise =  new Date(this.data[0].city.sunrise * 1000).toUTCString();;
+     this.dt_text = this.data[0].list[0].dt_txt;
+     this.sealevel = this.data[0].list[0].main.sea_level
   }
 
   //  5days for every city
