@@ -42,7 +42,7 @@ describe('TodayComponent', () => {
     tick();
     expect(proSpy).toHaveBeenCalled();
    // expect(proSpy).toEqual(response)
-    expect(subSpy).toHaveBeenCalledTimes(0);
+   // expect(subSpy).toHaveBeenCalledBefore(proSpy);
   }));
 
   it('testing execution within subscrbe method', fakeAsync(() => {
