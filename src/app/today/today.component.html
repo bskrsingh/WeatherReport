@@ -23,10 +23,8 @@
                 {{(WeatherData.main.feels_like-273.15).toFixed(0)}}°</div>
             <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{WeatherData.name}}</div>
             <div class="weatherWidgetRow" style="font-size: 12px;">Humidity: {{WeatherData.main.humidity}}%</div>
-            <div class="weatherWidgetRow" style="font-size: 12px;">Sunrise Time: {{sunriseTime | date:'h:mm
-                a z'}}</div>
-            <div class="weatherWidgetRow" style="font-size: 12px;">Sunset Time: {{sunsetTime | date:'h:mm
-                a z'}}</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">Sunrise Time: {{(WeatherData.sys.sunrise*1000) | date:'shortTime'}}</div>
+            <div class="weatherWidgetRow" style="font-size: 12px;">Sunset Time: {{(WeatherData.sys.sunset*1000) | date:'shortTime'}}</div>
         </div>
     </div>
 </div>
