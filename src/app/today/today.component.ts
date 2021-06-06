@@ -29,11 +29,11 @@ export class TodayComponent implements OnInit, OnDestroy {
     // 5 diffrent European city
     this.param = ["London", "Moscow", "Berlin", "madrid", "Rome"]
     //by default load the europe city
-    this.getWeatherDataCity(this.param, this.keys);
+    this.WeatherDataCity(this.param, this.keys);
   }
 
   // get the city forecast details from service
-  getWeatherDataCity(param: any, key: any) {
+  WeatherDataCity(param: any, key: any) {
     // calling the API from service
     param.forEach((element: any) => {
       this.sub = this.forecast.getWeatherData(element).subscribe(res => {

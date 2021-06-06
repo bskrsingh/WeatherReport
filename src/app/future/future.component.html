@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
     <div class="col-lg-6 col-sm-12 col-xs-12 col-md-12 paddDiv">
-        <h3 class="dataHead">{{dt_text | date: 'EEEE, MMMM d, y'}} Forecast</h3>
+        <h3 class="dataHead">{{dt_text | date: 'MMM d, y, h:mm:ss a'}} Forecast</h3>
         <span>{{city}}</span>
         <div>
             <b>Sunrise</b> {{sunrise}} / <b>Sunset</b> {{sunset}}
@@ -16,11 +16,11 @@
     </div>
     <div class="col-lg-6 col-sm-12 col-xs-12 col-md-12 paddDiv">
         <div class="primary" *ngIf="primaryDisplay">
-            <h3 class="dataHead">5 days Forecast</h3>
+            <h3 class="dataHead">5 days Forecast At 9:00</h3>
             <ul>
                 <li class="main row" (click)="toggle(weatherData[i], i)" *ngFor="let forecast of weatherData; let i =index">
                     <div class="col-lg-4 col-sm-4 col-xs-4">
-                        <span> {{forecast.dt_txt | date: 'EEEE, MMMM d, y'}} </span>
+                        <span> {{forecast.dt_txt | date: 'MMM d, y, h:mm:ss a'}} </span>
                     </div>
                     <div class="col-lg-2 col-sm-3 col-xs-3">
                         <span>
@@ -34,7 +34,7 @@
                         </span>
                     </div>
                     <div class="col-lg-4 col-sm-4 col-xs-4"> 
-                        <span>{{forecast.main.sea_level}}mm</span> &nbsp;
+                        <span><b>SeaLevel</b>{{forecast.main.sea_level}}mm</span> &nbsp;
                         <span><i class="fa fa-caret-down" area-hidden="true"></i></span>
                     </div>
                     
@@ -43,7 +43,7 @@
         </div>
 
         <div class="secondaryDsp" *ngIf="secondaryDsp">
-            <h3 class="dataHead">5 days Forecast</h3>
+            <h3 class="dataHead">5 days Forecast At 9:00</h3>
             <ul class="sub">
                 <li *ngFor="let forecast of weatherData; let i=index" [ngClass]="{'selected':selectedIndex == i}">
                     <span (click)="showDetails(weatherData[i])">{{forecast.dt_txt | date: 'EEE'}}</span>
