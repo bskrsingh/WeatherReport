@@ -29,11 +29,11 @@ export class TodayComponent implements OnInit, OnDestroy {
     // 5 diffrent European city
     this.param = ["London", "Moscow", "Berlin", "madrid", "Rome"]
     //by default load the europe city
-    this.WeatherDataCity(this.param, this.keys);
+    this.getWeatherDataCity(this.param, this.keys);
   }
 
   // get the city forecast details from service
-  WeatherDataCity(param: any, key: any) {
+  getWeatherDataCity(param: any, key: any) {
     // calling the API from service
     param.forEach((element: any) => {
       this.sub = this.forecast.getWeatherData(element).subscribe(res => {
@@ -45,7 +45,8 @@ export class TodayComponent implements OnInit, OnDestroy {
   }
 
   dayNightdsp() {
-    this.sunriseTime = new Date(this.WeatherData.sys.sunrise * 1000).toISOString();
+    this.sunriseTime = new Date(this.WeatherData.sys.sunrise * 1000).toUTCString();
+    this.sunriseTime.toLocaleString()
     this.sunsetTime = new Date(this.WeatherData.sys.sunset * 1000).toISOString();
     let currentDate = new Date();
     if (this.keys[0] == 'er') { // this will check to giving the europe or india and accordingly change the time

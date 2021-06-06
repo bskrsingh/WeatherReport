@@ -1,5 +1,4 @@
-<div class="">
-    <div class="foreCast col-lg-12 col-sm-12 col-xs-12 col-md-12">Forecast Weather Report
+ <div class="foreCast col-lg-12 col-sm-12 col-xs-12 col-md-12">Forecast Weather Report
          <a href="javascript:void(0)" routerLink="/today" class="pull-right">
             <i class="fa fa-caret-left" area-hidden="true"></i> Back
         </a>
@@ -7,11 +6,8 @@
     <div class="container">
         <div class="row">
     <div class="col-lg-6 col-sm-12 col-xs-12 col-md-12 paddDiv">
-        <h3 class="dataHead">{{dt_text | date: 'MMM d, y, h:mm:ss a'}} Forecast</h3>
+        <h3 class="dataHead">Today: {{dt_text | date: 'MMM d, y, h:mm:ss a'}} Forecast</h3>
         <span>{{city}}</span>
-        <div>
-            <b>Sunrise</b> {{sunrise}} / <b>Sunset</b> {{sunset}}
-        </div>
         <div><b>SeaLevel </b> {{sealevel}}mm</div>
     </div>
     <div class="col-lg-6 col-sm-12 col-xs-12 col-md-12 paddDiv">
@@ -62,6 +58,5 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 </div>

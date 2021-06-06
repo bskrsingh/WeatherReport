@@ -44,8 +44,6 @@ sealevel:any
   dateTimeBinding(){
      // this is for one way binding in left section of future component
      this.city = this.data[0].city.name;
-     this.sunset =  new Date(this.data[0].city.sunset * 1000).toUTCString();
-     this.sunrise =  new Date(this.data[0].city.sunrise * 1000).toUTCString();;
      this.dt_text = this.data[0].list[0].dt_txt;
      this.sealevel = this.data[0].list[0].main.sea_level
   }
@@ -55,8 +53,6 @@ sealevel:any
     for(let i=0; i<data.length; i=i+8){
       this.weatherData.push(data[i])
     }
-    console.log("this.weatherData",this.weatherData);
-    
   }
 
   // switch to date or day and highlighted the day
